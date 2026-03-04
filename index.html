@@ -1,26 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Valentine</title>
+<title>My Valentine ❤️</title>
 
 <style>
+
 body{
 font-family: Arial;
 text-align:center;
 background:#ffe6f0;
-margin-top:100px;
+margin-top:120px;
+overflow:hidden;
+}
+
+h1{
+font-size:40px;
 }
 
 button{
-padding:15px 25px;
+padding:15px 30px;
 font-size:18px;
 margin:10px;
 cursor:pointer;
+border:none;
+border-radius:8px;
+}
+
+#yes{
+background:#ff4d6d;
+color:white;
 }
 
 #no{
 position:absolute;
+background:#888;
+color:white;
 }
+
+/* floating hearts */
+
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation: float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
 </style>
 
 </head>
@@ -29,10 +65,16 @@ position:absolute;
 
 <h1>Will you be my Valentine? ❤️</h1>
 
-<button onclick="yesClicked()">Yes 💖</button>
+<button id="yes" onclick="yesClicked()">Yes 💖</button>
 <button id="no" onmouseover="moveButton()">No 😢</button>
 
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
 <script>
+
+/* move NO button */
 
 function moveButton(){
 var button=document.getElementById("no");
@@ -44,12 +86,42 @@ button.style.left=x+"px";
 button.style.top=y+"px";
 }
 
+/* YES click */
+
 function yesClicked(){
-document.body.innerHTML =
-"<h1>You made the best decision 😍❤️</h1>" +
-"<img src='https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif' width='300'>" +
-"<h2>I Love You So Much 💖</h2>";
+
+document.getElementById("music").play();
+
+document.body.innerHTML = `
+<h1>You made the best decision 😍❤️</h1>
+
+<img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="350">
+
+<h2>I Love You So Much 💖</h2>
+
+<h3>You are the best thing in my life ❤️</h3>
+`;
+
 }
+
+/* floating hearts */
+
+setInterval(function(){
+
+var heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+heart.remove();
+},6000);
+
+},300);
 
 </script>
 
