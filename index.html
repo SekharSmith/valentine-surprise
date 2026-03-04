@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Valentine</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background:#ffe6f0;
+margin-top:100px;
+}
+
+button{
+padding:15px 25px;
+font-size:18px;
+margin:10px;
+cursor:pointer;
+}
+
+#no{
+position:absolute;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Will you be my Valentine? ❤️</h1>
+
+<button onclick="yesClicked()">Yes 💖</button>
+<button id="no" onmouseover="moveButton()">No 😢</button>
+
+<script>
+
+function moveButton(){
+var button=document.getElementById("no");
+
+var x=Math.random()*window.innerWidth;
+var y=Math.random()*window.innerHeight;
+
+button.style.left=x+"px";
+button.style.top=y+"px";
+}
+
+function yesClicked(){
+document.body.innerHTML =
+"<h1>You made the best decision 😍❤️</h1><h2>I Love You So Much 💖</h2>";
+}
+
+</script>
+
+</body>
+</html>
